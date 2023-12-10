@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Строка</title>
+    <link rel="stylesheet" th:href="@{css/stylesIndex.css}" type="text/css"/>
+</head>
+<body>
+<section>
+    <div>
+        <h2>
+            Рады приветствовать Вас
+        </h2>
+        <form th:action="@{/}" method="post">
+            <div class="input">
+                <input type="text" name="currentString" placeholder="Введите строку">
+            </div>
+            <div class="input">
+                <input id="submitButton" type="submit" value="Посчитать"/>
+            </div>
+        </form>
+    </div>
+</section>
+<section>
+    <div>
+        <p th:unless="${string == NULL}">
+            Строка " <label th:text="${string} ?:''"></label>" содержит:
+        </p>
+    </div>
+    <div>
+        <table>
+            <tbody>
+            <tr th:each="chMap:${charactersMap}">
+                <td th:text="${chMap.key}+':'"></td>
+                <td th:text="${chMap.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
